@@ -9,6 +9,8 @@ const studentsReducer = (state = INITIAL_STUDENT_STATE, { type, payload }) => {
   switch (type) {
     case StudentActionType.FETCH_ALL_STUDENTS:
       return { ...state, allStudents: payload };
+    case StudentActionType.FETCH_STUDENT_BY_ID:
+      return { ...state, allShoes: payload };
     default:
       return state;
   }
