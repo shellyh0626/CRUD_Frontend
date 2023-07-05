@@ -9,3 +9,16 @@ export const fetchAllStudents = (payload) => {
     payload: payload,
   };
 };
+
+export const fetchAllStudentsThunk = () => {
+  return async (dispatch) => {
+    try {
+      console.log("FETCH ALL STUDENTS THUNK IS FIRING");
+      const response = await axios.get("http://localhost:8080/api/students");
+      console.log("FETCH ALL STUDENTS THUNK COMPLETED");
+      dispatch(fetchAllStudents(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
