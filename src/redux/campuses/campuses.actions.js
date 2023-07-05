@@ -63,3 +63,10 @@ export const addCampusThunk = (campus) => {
     }
   };
 };
+
+export const updateCampus = (payload) => {
+  return {
+    type: CampusActionType.UPDATE_CAMPUS,
+    payload: payload,
+  };
+};
