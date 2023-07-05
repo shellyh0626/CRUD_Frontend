@@ -28,4 +28,17 @@ export const fetchCampusById = (payload) => {
     type: CampusActionType.FETCH_CAMPUS_BY_ID,
     payload: payload,
   };
-}
+};
+
+export const fetchCampusByIdThunk = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/api/campuses/${id}`
+      );
+      dispatch(fetchCampusById(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
