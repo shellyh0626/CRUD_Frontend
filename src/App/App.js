@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 
 // Pages
@@ -13,6 +13,20 @@ import Students from "../pages/Students";
 function App() {
   return (
     <Router>
+      <header>
+        <div className="logo">
+          <h1>CRUD Application</h1>
+          <p>- Platform For Managing Students and Campuses</p>
+        </div>
+        <ul>
+          <li>
+            <Link to="/students">Students</Link>
+          </li>
+          <li>
+            <Link to="/campuses">Campuses</Link>
+          </li>
+        </ul>
+      </header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/campuses" element={<Campuses />} />
