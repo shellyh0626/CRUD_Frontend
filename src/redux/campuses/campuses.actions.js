@@ -42,3 +42,24 @@ export const fetchCampusByIdThunk = (id) => {
     }
   };
 };
+
+export const addCampus = (payload) => {
+  return {
+    type: CampusActionType.ADD_CAMPUS,
+    payload: payload,
+  };
+};
+
+export const addCampusThunk = (campus) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/campuses",
+        campus
+      );
+      dispatch(addCampus(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
