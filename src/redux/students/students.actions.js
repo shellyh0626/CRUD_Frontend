@@ -29,3 +29,16 @@ export const fetchStudentById = (payload) => {
     payload: payload,
   };
 };
+
+export const fetchStudentByIdThunk = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/api/students/${id}`
+      );
+      dispatch(fetchStudentById(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
