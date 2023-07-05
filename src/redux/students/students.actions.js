@@ -84,3 +84,23 @@ export const updateStudentThunk = (student) => {
     }
   };
 };
+
+export const deleteStudent = (payload) => {
+  return {
+    type: StudentActionType.DELETE_STUDENT,
+    payload: payload,
+  };
+};
+
+export const deleteStudentThunk = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8080/api/students/${id}`
+      );
+      dispatch(deleteStudent(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
