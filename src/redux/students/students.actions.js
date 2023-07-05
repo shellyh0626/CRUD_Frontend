@@ -3,7 +3,7 @@ import axios from "axios";
 import StudentActionType from "./students.types";
 
 export const fetchAllStudents = (payload) => {
-  console.log("FETCH ALL SHOES ACTION");
+  console.log("FETCH ALL STUDENTs ACTION");
   return {
     type: StudentActionType.FETCH_ALL_STUDENTS,
     payload: payload,
