@@ -70,3 +70,17 @@ export const updateCampus = (payload) => {
     payload: payload,
   };
 };
+
+export const updateCampusThunk = (campus) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/api/campuses/${campus.id}`,
+        campus
+      );
+      dispatch(updateCampus(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
