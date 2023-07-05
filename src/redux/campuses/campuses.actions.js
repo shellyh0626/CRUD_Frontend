@@ -91,3 +91,16 @@ export const deleteCampus = (payload) => {
     payload: payload,
   };
 };
+
+export const deleteCampusThunk = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8080/api/campuses/${id}`
+      );
+      dispatch(deleteCampus(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
