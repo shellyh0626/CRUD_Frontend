@@ -63,3 +63,24 @@ export const addStudentThunk = (student) => {
     }
   };
 };
+
+export const updateStudent = (payload) => {
+  return {
+    type: StudentActionType.UPDATE_STUDENT,
+    payload: payload,
+  };
+};
+
+export const updateStudentThunk = (student) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8080/api/students/${student.id}`,
+        student
+      );
+      dispatch(updateStudent(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
