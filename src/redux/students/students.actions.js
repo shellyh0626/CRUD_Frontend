@@ -42,3 +42,24 @@ export const fetchStudentByIdThunk = (id) => {
     }
   };
 };
+
+export const addStudent = (payload) => {
+  return {
+    type: StudentActionType.ADD_STUDENT,
+    payload: payload,
+  };
+};
+
+export const addStudentThunk = (student) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/students",
+        student
+      );
+      dispatch(addStudent(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
