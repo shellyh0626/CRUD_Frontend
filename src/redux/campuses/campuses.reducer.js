@@ -10,6 +10,8 @@ const campusesReducer = (state = INITIAL_CAMPUS_STATE, { type, payload }) => {
       return { ...state, allCampuses: payload };
     case CampusActionType.FETCH_CAMPUS_BY_ID:
       return { ...state, allCampuses: payload };
+    case CampusActionType.ADD_CAMPUS:
+      return { ...state, allCampuses: payload };
     default:
       return state;
   }
