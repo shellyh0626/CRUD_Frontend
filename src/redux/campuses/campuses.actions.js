@@ -84,3 +84,10 @@ export const updateCampusThunk = (campus) => {
     }
   };
 };
+
+export const deleteCampus = (payload) => {
+  return {
+    type: CampusActionType.DELETE_CAMPUS,
+    payload: payload,
+  };
+};
