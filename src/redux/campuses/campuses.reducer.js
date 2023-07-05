@@ -8,6 +8,8 @@ const campusesReducer = (state = INITIAL_CAMPUS_STATE, { type, payload }) => {
   switch (type) {
     case CampusActionType.FETCH_ALL_CAMPUSES:
       return { ...state, allCampuses: payload };
+    case CampusActionType.FETCH_CAMPUS_BY_ID:
+      return { ...state, allCampuses: payload };
     default:
       return state;
   }
