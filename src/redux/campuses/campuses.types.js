@@ -3,6 +3,7 @@ const CampusActionType = {
   FETCH_CAMPUS_BY_ID: "FETCH_CAMPUS_BY_ID",
   ADD_CAMPUS: "ADD_CAMPUS",
   UPDATE_CAMPUS: "UPDATE_CAMPUS",
+  DELETE_CAMPUS: "DELETE_CAMPUS",
 };
 
 export default CampusActionType;
