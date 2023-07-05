@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import CampusActionType from "./campus.types";
+import CampusActionType from "./campuses.types";
 
 export const fetchAllCampuses = (payload) => {
   console.log("FETCH ALL CAMPUSES ACTION");

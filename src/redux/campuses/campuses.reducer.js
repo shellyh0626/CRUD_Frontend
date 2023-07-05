@@ -1,4 +1,4 @@
-import CampusActionType from "./campus.types";
+import CampusActionType from "./campuses.types";
 
 export const INITIAL_CAMPUS_STATE = {
   allCampuses: [],
