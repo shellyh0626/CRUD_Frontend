@@ -4,7 +4,7 @@ import "./App.css";
 // Pages
 import Home from "../pages/Home";
 import Campuses from "../pages/Campuses";
-import Campus from "../pages/Campus";
+import Campus from "../pages/Campus.jsx";
 import CampusForm from "../pages/CampusForm";
 import StudentForm from "../pages/StudentForm";
 import Student from "../pages/Student";
