@@ -100,3 +100,34 @@ header a:hover {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.list-campuses {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.list-campuses .card {
+  width: 45%;
+  display: flex;
+  flex-direction: row;
+}
+
+.list-campuses .right {
+  padding: 10px;
+  flex-grow: 1;
+}
+
+.list-campuses .info {
+  height: 80%;
+}
+
+.list-campuses .right ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0;
+}
