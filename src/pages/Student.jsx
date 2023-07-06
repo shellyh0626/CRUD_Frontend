@@ -15,7 +15,7 @@ const Student = () => {
     dispatch(fetchStudentByIdThunk(id));
     setTimeout(() => {
       if (student.campusId) {
-        dispatch(fetchStudentByIdThunk(student.campusId));
+        dispatch(fetchCampusByIdThunk(student.campusId));
       }
     }, 500);
   }, []);
