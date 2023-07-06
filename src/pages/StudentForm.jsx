@@ -117,6 +117,13 @@ const StudentForm = () => {
             alert("Please enter a valid email address");
             return;
           }
+          if (state.gpa < 0 || state.gpa > 4) {
+            alert("Please enter a valid GPA");
+            return;
+          }
+          if (state.campusId === "Select" || state.campusId === "") {
+            alert("Please select a campus");
+          }
           if (
             state.firstName &&
             state.lastName &&
