@@ -21,8 +21,6 @@ function App() {
         <ul>
           <li>
             <Link to="/students">Students</Link>
-          </li>
-          <li>
             <Link to="/campuses">Campuses</Link>
           </li>
         </ul>
