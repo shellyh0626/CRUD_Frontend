@@ -1,26 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { fetchAllStudentsThunk } from "../redux/students/students.actions";
-import { fetchAllCampusesThunk } from "../redux/campuses/campuses.actions";
 
 const Home = () => {
-  const dispatch = useDispatch();
-
-  const fetchAllStudents = () => {
-    return dispatch(fetchAllStudentsThunk());
-  };
-
-  const fetchAllCampuses = () => {
-    return dispatch(fetchAllCampusesThunk());
-  };
-
-  // defaults get all student / campuses
-  React.useEffect(() => {
-    fetchAllStudents();
-    fetchAllCampuses();
-  });
-
   return (
     <div className="container">
       <h1>Home Page</h1>
