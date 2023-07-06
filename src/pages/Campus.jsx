@@ -26,7 +26,7 @@ const Campus = () => {
         <p>description: {campus.description}</p>
       </div>
       <div>
-        <ListStudents />
+        <ListStudents list={allStudents} />
       </div>
     </div>
   );
