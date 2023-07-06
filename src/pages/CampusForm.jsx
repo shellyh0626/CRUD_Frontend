@@ -17,7 +17,7 @@ const CampusForm = () => {
     <div className="container">
       <h1>CampusForm Page</h1>
       <div>
-        <div>
+        <div className="form-item">
           <label>name</label>
           <input
             type="text"
@@ -25,7 +25,7 @@ const CampusForm = () => {
             onChange={(e) => setState({ ...state, name: e.target.value })}
           />
         </div>
-        <div>
+        <div className="form-item">
           <label>image</label>
           <input
             type="text"
@@ -33,7 +33,7 @@ const CampusForm = () => {
             onChange={(e) => setState({ ...state, imageUrl: e.target.value })}
           />
         </div>
-        <div>
+        <div className="form-item">
           <label>description</label>
           <input
             type="text"
@@ -43,31 +43,33 @@ const CampusForm = () => {
             }
           />
         </div>
-        <div>
+        <div className="form-item">
           <label>address</label>
           <input
             type="text"
             value={state.address}
             onChange={(e) => setState({ ...state, address: e.target.value })}
           />
-          <button
-            onClick={() => {
-              if (
-                state.name === "" ||
-                state.imageUrl === "" ||
-                state.description === "" ||
-                state.address === ""
-              ) {
-                alert("Please fill out all fields");
-                return;
-              }
+          <div className="form-item">
+            <button
+              onClick={() => {
+                if (
+                  state.name === "" ||
+                  state.imageUrl === "" ||
+                  state.description === "" ||
+                  state.address === ""
+                ) {
+                  alert("Please fill out all fields");
+                  return;
+                }
 
-              dispatch(addCampusThunk(state));
-              alert("Created Successfully");
-            }}
-          >
-            Submit
-          </button>
+                dispatch(addCampusThunk(state));
+                alert("Created Successfully");
+              }}
+            >
+              Submit
+            </button>
+          </div>
         </div>
       </div>
     </div>

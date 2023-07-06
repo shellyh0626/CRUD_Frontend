@@ -29,7 +29,7 @@ const StudentForm = () => {
     <div className="container">
       <h1>StudentForm Page</h1>
       <div>
-        <div>
+        <div className="form-item">
           <label>campus</label>
           <select
             onChange={(e) => setState({ ...state, campusId: e.target.value })}
@@ -44,7 +44,7 @@ const StudentForm = () => {
             })}
           </select>
         </div>
-        <div>
+        <div className="form-item">
           <label>first name</label>
           <input
             type="text"
@@ -52,7 +52,7 @@ const StudentForm = () => {
             onChange={(e) => setState({ ...state, firstName: e.target.value })}
           />
         </div>
-        <div>
+        <div className="form-item">
           <label>last name</label>
           <input
             type="text"
@@ -60,7 +60,7 @@ const StudentForm = () => {
             onChange={(e) => setState({ ...state, lastName: e.target.value })}
           />
         </div>
-        <div>
+        <div className="form-item">
           <label>email</label>
           <input
             type="text"
@@ -78,7 +78,7 @@ const StudentForm = () => {
             }}
           />
         </div>
-        <div>
+        <div className="form-item">
           <label>image</label>
           <input
             type="text"
@@ -86,7 +86,7 @@ const StudentForm = () => {
             onChange={(e) => setState({ ...state, imageUrl: e.target.value })}
           />
         </div>
-        <div>
+        <div className="form-item">
           <label>gpa</label>
           <input
             type="text"
@@ -109,37 +109,39 @@ const StudentForm = () => {
           />
         </div>
       </div>
-      <button
-        onClick={() => {
-          const reg =
-            /^([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-          if (!reg.test(state.email)) {
-            alert("Please enter a valid email address");
-            return;
-          }
-          if (state.gpa < 0 || state.gpa > 4) {
-            alert("Please enter a valid GPA");
-            return;
-          }
-          if (state.campusId === "Select" || state.campusId === "") {
-            alert("Please select a campus");
-          }
-          if (
-            state.firstName &&
-            state.lastName &&
-            state.email &&
-            state.imageUrl &&
-            state.gpa &&
-            state.campusId
-          ) {
-            dispatch(addStudentThunk(state));
-          } else {
-            alert("Please fill out all fields");
-          }
-        }}
-      >
-        Submit
-      </button>
+      <div className="form-item">
+        <button
+          onClick={() => {
+            const reg =
+              /^([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+            if (!reg.test(state.email)) {
+              alert("Please enter a valid email address");
+              return;
+            }
+            if (state.gpa < 0 || state.gpa > 4) {
+              alert("Please enter a valid GPA");
+              return;
+            }
+            if (state.campusId === "Select" || state.campusId === "") {
+              alert("Please select a campus");
+            }
+            if (
+              state.firstName &&
+              state.lastName &&
+              state.email &&
+              state.imageUrl &&
+              state.gpa &&
+              state.campusId
+            ) {
+              dispatch(addStudentThunk(state));
+            } else {
+              alert("Please fill out all fields");
+            }
+          }}
+        >
+          Submit
+        </button>
+      </div>
     </div>
   );
 };

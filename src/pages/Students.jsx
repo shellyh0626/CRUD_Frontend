@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ListStudents from "../components/ListStudents";
 import { fetchAllStudentsThunk } from "../redux/students/students.actions";
 
