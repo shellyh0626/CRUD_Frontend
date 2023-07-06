@@ -104,3 +104,23 @@ export const deleteStudentThunk = (id) => {
     }
   };
 };
+
+export const fetchAllStudentsByCampusId = (payload) => {
+  return {
+    type: StudentActionType.FETCH_ALL_STUDENTS_BY_CAMPUS_ID,
+    payload: payload,
+  };
+};
+
+export const fetchAllStudentsByCampusIdThunk = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/api/students/campus/${id}`
+      );
+      dispatch(fetchAllStudentsByCampusId(response.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
