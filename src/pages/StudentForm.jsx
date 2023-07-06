@@ -28,92 +28,97 @@ const StudentForm = () => {
   return (
     <div className="container">
       <h1>StudentForm Page</h1>
-      <div className="container">
-        <h1>CampusForm Page</h1>
+      <div>
         <div>
-          <div>
-            <label>campus</label>
-            <select
-              onChange={(e) => setState({ ...state, campusId: e.target.value })}
-            >
-              <option defaultValue>Select</option>
-              {allCampuses.map((campus) => {
-                return (
-                  <option key={campus.id} value={campus.id}>
-                    {campus.name}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-          <div>
-            <label>first name</label>
-            <input
-              type="text"
-              value={state.firstName}
-              onChange={(e) =>
-                setState({ ...state, firstName: e.target.value })
-              }
-            />
-          </div>
-          <div>
-            <label>last name</label>
-            <input
-              type="text"
-              value={state.lastName}
-              onChange={(e) => setState({ ...state, lastName: e.target.value })}
-            />
-          </div>
-          <div>
-            <label>email</label>
-            <input
-              type="text"
-              value={state.email}
-              onChange={(e) => setState({ ...state, email: e.target.value })}
-            />
-          </div>
-          <div>
-            <label>image</label>
-            <input
-              type="text"
-              value={state.imageUrl}
-              onChange={(e) => setState({ ...state, imageUrl: e.target.value })}
-            />
-          </div>
-          <div>
-            <label>gpa</label>
-            <input
-              type="text"
-              value={state.gpa}
-              onChange={(e) => setState({ ...state, gpa: e.target.value })}
-            />
-          </div>
+          <label>campus</label>
+          <select
+            onChange={(e) => setState({ ...state, campusId: e.target.value })}
+          >
+            <option defaultValue>Select</option>
+            {allCampuses.map((campus) => {
+              return (
+                <option key={campus.id} value={campus.id}>
+                  {campus.name}
+                </option>
+              );
+            })}
+          </select>
         </div>
-        <button
-          onClick={() => {
-            const reg =
-              /^([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-            if (!reg.test(state.email)) {
-              alert("Please enter a valid email address");
-              return;
-            }
-            if (
-              state.firstName &&
-              state.lastName &&
-              state.email &&
-              state.imageUrl &&
-              state.gpa &&
-              state.campusId
-            ) {
-              dispatch(addStudentThunk(state));
-            } else {
-              alert("Please fill out all fields");
-            }
-          }}
-        >
-          Submit
-        </button>
+        <div>
+          <label>first name</label>
+          <input
+            type="text"
+            value={state.firstName}
+            onChange={(e) => setState({ ...state, firstName: e.target.value })}
+          />
+        </div>
+        <div>
+          <label>last name</label>
+          <input
+            type="text"
+            value={state.lastName}
+            onChange={(e) => setState({ ...state, lastName: e.target.value })}
+          />
+        </div>
+        <div>
+          <label>email</label>
+          <input
+            type="text"
+            value={state.email}
+            onChange={(e) => {
+              const reg =
+                /^([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+              if (!reg.test(e.target.value)) {
+                setState({ ...state, email: e.target.value });
+                e.target.style.color = "red";
+                return;
+              }
+              e.target.style.color = "black";
+              setState({ ...state, email: e.target.value });
+            }}
+          />
+        </div>
+        <div>
+          <label>image</label>
+          <input
+            type="text"
+            value={state.imageUrl}
+            onChange={(e) => setState({ ...state, imageUrl: e.target.value })}
+          />
+        </div>
+        <div>
+          <label>gpa</label>
+          <input
+            type="text"
+            value={state.gpa}
+            onChange={(e) => setState({ ...state, gpa: e.target.value })}
+          />
+        </div>
       </div>
+      <button
+        onClick={() => {
+          const reg =
+            /^([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+          if (!reg.test(state.email)) {
+            alert("Please enter a valid email address");
+            return;
+          }
+          if (
+            state.firstName &&
+            state.lastName &&
+            state.email &&
+            state.imageUrl &&
+            state.gpa &&
+            state.campusId
+          ) {
+            dispatch(addStudentThunk(state));
+          } else {
+            alert("Please fill out all fields");
+          }
+        }}
+      >
+        Submit
+      </button>
     </div>
   );
 };
