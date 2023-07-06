@@ -2,9 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ListStudents from "../components/ListStudents";
+import { fetchAllStudentsThunk } from "../redux/students/students.actions";
 
 const Students = () => {
   const allStudents = useSelector((state) => state.students.allStudents);
+
+  const dispatch = useDispatch();
+
+  function fetchAllStudents() {
+    return dispatch(fetchAllStudentsThunk());
+  }
+
+  React.useEffect(() => {
+    fetchAllStudents();
+  }, []);
 
   return (
     <div className="container">
