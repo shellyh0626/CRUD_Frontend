@@ -9,7 +9,7 @@ const Campuses = () => {
   return (
     <div className="container">
       <h1>
-        Campuses Page &nbsp; <Link to="/campuses/new">Create Campuse</Link>
+        Campuses Page &nbsp; <Link to="/campuses/new">Create Campus</Link>
       </h1>
       <ListCampuses list={allCampuses} />
     </div>
