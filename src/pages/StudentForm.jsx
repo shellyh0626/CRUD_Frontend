@@ -91,7 +91,21 @@ const StudentForm = () => {
           <input
             type="text"
             value={state.gpa}
-            onChange={(e) => setState({ ...state, gpa: e.target.value })}
+            onChange={(e) => {
+              if (isNaN(e.target.value)) {
+                e.target.style.color = "red";
+                alert("Please enter a valid GPA");
+                return;
+              }
+              const gpa = parseFloat(e.target.value);
+              if (gpa < 0 || gpa > 4) {
+                e.target.style.color = "red";
+                alert("Please enter a valid GPA");
+                return;
+              }
+              e.target.style.color = "black";
+              setState({ ...state, gpa: e.target.value });
+            }}
           />
         </div>
       </div>
