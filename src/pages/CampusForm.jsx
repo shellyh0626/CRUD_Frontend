@@ -15,7 +15,7 @@ const CampusForm = () => {
 
   return (
     <div className="container">
-      <h1>Campuses Page</h1>
+      <h1>CampusForm Page</h1>
       <div>
         <div>
           <label>name</label>
