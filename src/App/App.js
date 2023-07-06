@@ -15,8 +15,8 @@ function App() {
     <Router>
       <header>
         <div className="logo">
-          <h1>CRUD Application</h1>
-          <p>- Platform For Managing Students and Campuses</p>
+          <h1>My University</h1>
+          <p>- The Best Students and Campuses Management Tool</p>
         </div>
         <ul>
           <li>
