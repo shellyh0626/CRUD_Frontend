@@ -13,9 +13,11 @@ const Campus = () => {
   React.useEffect(() => {
     const id = window.location.pathname.split("/")[2];
     dispatch(fetchCampusByIdThunk(id));
-    dispatch(fetchAllStudentsByCampusIdThunk(id));
-  }, [campus, allStudents]);
-
+    if (allStudents.length > 0) {
+      dispatch(fetchAllStudentsByCampusIdThunk(id));
+    }
+  }, []);
+  
   return (
     <div className="container">
       <h1>Campus Page</h1>
