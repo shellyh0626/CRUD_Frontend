@@ -2,6 +2,7 @@ import CampusActionType from "./campuses.types";
 
 export const INITIAL_CAMPUS_STATE = {
   allCampuses: [],
+  campus: {},
 };
 
 const campusesReducer = (state = INITIAL_CAMPUS_STATE, { type, payload }) => {
@@ -9,13 +10,24 @@ const campusesReducer = (state = INITIAL_CAMPUS_STATE, { type, payload }) => {
     case CampusActionType.FETCH_ALL_CAMPUSES:
       return { ...state, allCampuses: payload };
     case CampusActionType.FETCH_CAMPUS_BY_ID:
-      return { ...state, allCampuses: payload };
+      return { ...state, campus: payload };
     case CampusActionType.ADD_CAMPUS:
-      return { ...state, allCampuses: payload };
+      state.allCampuses.push(payload);
+      return { ...state, campuses: payload };
     case CampusActionType.UPDATE_CAMPUS:
-      return { ...state, allCampuses: payload };
+      const pos = state.allCampuses.findIndex(
+        (campus) => campus.id === payload.id
+      );
+      state.allCampuses[pos] = payload;
+      return { ...state, campuses: payload };
     case CampusActionType.DELETE_CAMPUS:
-      return { ...state, allCampuses: payload };
+      const pos1 = state.allCampuses.findIndex(
+        (campus) => campus.id === payload.id
+      );
+      if (pos1 > -1) {
+        state.allCampuses = state.allCampuses.splice(pos1, 1);
+      }
+      return { ...state };
     default:
       return state;
   }
