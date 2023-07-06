@@ -45,3 +45,10 @@ header a:hover {
   color: green;
   text-decoration: none;
 }
+
+.card {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
