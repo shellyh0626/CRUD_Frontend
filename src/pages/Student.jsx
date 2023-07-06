@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchStudentByIdThunk } from "../redux/students/students.actions";
+import { fetchCampusByIdThunk } from "../redux/campuses/campuses.actions";
 import { Link } from "react-router-dom";
 
 const Student = () => {
