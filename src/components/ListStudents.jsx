@@ -23,7 +23,7 @@ export default function ListItems(props) {
                     dispatch(deleteStudentThunk(item.id));
                   }}
                 >
-                  X(delete)
+                  delete
                 </button>
               </li>
             </ul>

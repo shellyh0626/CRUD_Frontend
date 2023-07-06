@@ -21,7 +21,7 @@ export default function ListItems(props) {
                     dispatch(deleteCampusThunk(item.id));
                   }}
                 >
-                  X(Delete)
+                  Delete
                 </button>
               </li>
             </ul>
