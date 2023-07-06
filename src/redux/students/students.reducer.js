@@ -2,6 +2,7 @@ import StudentActionType from "./students.types";
 
 export const INITIAL_STUDENT_STATE = {
   allStudents: [],
+  student: {},
 };
 
 const studentsReducer = (state = INITIAL_STUDENT_STATE, { type, payload }) => {
@@ -10,13 +11,26 @@ const studentsReducer = (state = INITIAL_STUDENT_STATE, { type, payload }) => {
     case StudentActionType.FETCH_ALL_STUDENTS:
       return { ...state, allStudents: payload };
     case StudentActionType.FETCH_STUDENT_BY_ID:
-      return { ...state, allStudents: payload };
+      return { ...state, students: payload };
     case StudentActionType.ADD_STUDENT:
-      return { ...state, allStudents: payload };
+      state.allStudents.push(payload);
+      return { ...state, students: payload };
     case StudentActionType.UPDATE_STUDENT:
-      return { ...state, allStudents: payload };
+      const pos = state.allStudents.findeIndex(
+        (student) => student.id === payload.id
+      );
+      if (pos > -1) {
+        state.allStudents[pos] = payload;
+      }
+      return { ...state, students: payload };
     case StudentActionType.DELETE_STUDENT:
-      return { ...state, allStudents: payload };
+      const pos1 = state.allStudents.findeIndex(
+        (student) => student.id === payload.id
+      );
+      if (pos1 > -1) {
+        state.allStudents = state.allStudents.splice(pos1, 1);
+      }
+      return { ...state };
     default:
       return state;
   }
