@@ -3,7 +3,7 @@ import React from "react";
 
 const Campus = () => {
   return (
-    <div>
+    <div className="container">
       <h1>Campus Page</h1>
     </div>
   );
