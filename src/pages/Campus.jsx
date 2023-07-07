@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCampusByIdThunk } from "../redux/campuses/campuses.actions";
-import { fetchAllStudentsByCampusIdThunk } from "../redux/students/students.actions";
+import { fetchAllStudentsThunk } from "../redux/students/students.actions";
 import ListStudents from "../components/ListStudents";
 
 const Campus = () => {
@@ -14,21 +14,29 @@ const Campus = () => {
     const id = window.location.pathname.split("/")[2];
     dispatch(fetchCampusByIdThunk(id));
     if (allStudents.length > 0) {
-      dispatch(fetchAllStudentsByCampusIdThunk(id));
+      return;
     }
-  }, []);
-  
+    dispatch(fetchAllStudentsThunk());
+  });
+
   return (
     <div className="container">
       <h1>Campus Page</h1>
-      <div>
-        <img src={campus.imageUrl} alt={campus.name} />
-        <p>name: {campus.name}</p>
-        <p>address: {campus.address}</p>
-        <p>description: {campus.description}</p>
+      <div className="campus-info">
+        <img src={campus.imageUrl} alt={campus.name} width="50%" />
+        <div>
+          <h1>{campus.name}</h1>
+          <p>{campus.description}</p>
+          <p>Address: {campus.address}</p>
+        </div>
       </div>
+      <br />
+      <h1>Students</h1>
       <div>
-        <ListStudents list={allStudents} />
+        <ListStudents
+          list={allStudents.filter((student) => student.campusId === campus.id)}
+          campuses={[campus]}
+        />
       </div>
     </div>
   );

@@ -13,22 +13,30 @@ export default function ListItems(props) {
           return (
             <div key={item.id} className="card">
               <img src={item.imageUrl} alt={item.name} width="50%" />
-              <div className="info">
-                <h1>
-                  <Link to={`/campuses/${item.id}`}>{item.name}</Link>
-                </h1>
+              <div className="right">
+                <div className="info">
+                  <h1>
+                    <Link to={`/campuses/${item.id}`}>{item.name}</Link>
+                  </h1>
+                  <p>
+                    {props.students?.filter(
+                      (student) => student.campusId === item.id
+                    ).length || 0}{" "}
+                    Students
+                  </p>
+                </div>
+                <ul>
+                  <li>
+                    <button
+                      onClick={() => {
+                        dispatch(deleteCampusThunk(item.id));
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </li>
+                </ul>
               </div>
-              <ul>
-                <li>
-                  <button
-                    onClick={() => {
-                      dispatch(deleteCampusThunk(item.id));
-                    }}
-                  >
-                    Delete
-                  </button>
-                </li>
-              </ul>
             </div>
           );
         })}

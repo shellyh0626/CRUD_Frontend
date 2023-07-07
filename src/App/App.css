@@ -1,8 +1,3 @@
-.container {
-  width: 80%;
-  margin: auto;
-}
-
 header {
   display: flex;
   flex-direction: row;
@@ -44,6 +39,11 @@ header a {
 header a:hover {
   color: green;
   text-decoration: none;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
 }
 
 .card {
@@ -130,4 +130,13 @@ header a:hover {
   flex-direction: row;
   justify-content: space-between;
   padding: 0;
+}
+
+.campus-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.campus-info div {
+  padding: 10px;
 }

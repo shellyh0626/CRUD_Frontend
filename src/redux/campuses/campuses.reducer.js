@@ -20,14 +20,12 @@ const campusesReducer = (state = INITIAL_CAMPUS_STATE, { type, payload }) => {
       );
       state.allCampuses[pos] = payload;
       return { ...state, campuses: payload };
-    case CampusActionType.DELETE_CAMPUS:
-      const pos1 = state.allCampuses.findIndex(
-        (campus) => campus.id === payload.id
+    case CampusActionType.DELETE_CAMPUS: {
+      state.allCampuses = state.allCampuses.filter(
+        (campus) => campus.id !== payload.id
       );
-      if (pos1 > -1) {
-        state.allCampuses = state.allCampuses.splice(pos1, 1);
-      }
       return { ...state };
+    }
     default:
       return state;
   }
