@@ -134,6 +134,7 @@ const StudentForm = () => {
               state.campusId
             ) {
               dispatch(addStudentThunk(state));
+              alert("Created Successfully");
             } else {
               alert("Please fill out all fields");
             }
