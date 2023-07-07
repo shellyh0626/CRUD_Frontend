@@ -23,18 +23,15 @@ const studentsReducer = (state = INITIAL_STUDENT_STATE, { type, payload }) => {
         state.allStudents[pos] = payload;
       }
       return { ...state, students: payload };
-    case StudentActionType.DELETE_STUDENT:
-      const pos1 = state.allStudents.findeIndex(
-        (student) => student.id === payload.id
+    case StudentActionType.DELETE_STUDENT: {
+      state.allStudents = state.allStudents.filter(
+        (student) => student.id !== payload.id
       );
-      if (pos1 > -1) {
-        state.allStudents = state.allStudents.splice(pos1, 1);
-      }
       return { ...state };
+    }
     default:
       return state;
   }
 };
-
 
 export default studentsReducer;

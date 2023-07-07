@@ -140,3 +140,23 @@ header a:hover {
 .campus-info div {
   padding: 10px;
 }
+
+.list-students {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.list-students .card {
+  width: 10%;
+  margin-right: 10px;
+}
+
+.student-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.student-info div {
+  width: 50%;
+}

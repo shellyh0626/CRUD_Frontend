@@ -1,35 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { deleteStudentThunk } from "../redux/students/students.actions";
 
 export default function ListItems(props) {
-  const dispatch = useDispatch();
-
   return props.list ? (
     props.list.length > 0 ? (
-      props.list.map((item) => {
-        return (
-          <div key={item.id} className="card">
-            <h1>
-              <Link to={`/students/${item.id}`}>
-                {item.firstName} {item.lastName}
-              </Link>
-            </h1>
-            <ul>
-              <li>
-                <button
-                  onClick={() => {
-                    dispatch(deleteStudentThunk(item.id));
-                  }}
-                >
-                  delete
-                </button>
-              </li>
-            </ul>
-          </div>
-        );
-      })
+      <div className="list-students">
+        {props.list.map((item) => {
+          return (
+            <div key={item.id} className="card">
+              <img
+                src={item.imageUrl}
+                alt={`${item.firstName} ${item.lastName}`}
+                width="100%"
+              />
+              <h1>
+                <Link to={`/students/${item.id}`}>
+                  {item.firstName} {item.lastName}
+                </Link>
+              </h1>
+              <h4>
+                <Link to={`/campuses/${item.campusId}`}>
+                  {props.campuses?.find(
+                    (campuse) => campuse.id === item.campusId
+                  )?.name || "Campus Name"}
+                </Link>
+              </h4>
+            </div>
+          );
+        })}
+      </div>
     ) : (
       <h1>No students found</h1>
     )

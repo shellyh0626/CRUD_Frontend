@@ -23,7 +23,7 @@ const StudentForm = () => {
 
   React.useEffect(() => {
     fetchAllCampuses();
-  }, []);
+  });
 
   return (
     <div className="container">

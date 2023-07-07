@@ -18,30 +18,33 @@ const Student = () => {
         dispatch(fetchCampusByIdThunk(student.campusId));
       }
     }, 500);
-  }, []);
+  });
 
   return (
     <div className="container">
       <h1>Student Page</h1>
-      <div>
-        <h2>Student Info</h2>
-        <img
-          src={student.imageUrl}
-          alt={`${student.firstName} ${student.lastName}`}
-        />
-        <p>first name: {student.firstName}</p>
-        <p>last name: {student.lastName}</p>
-        <p>email: {student.email}</p>
-        <p>gpa: {student.gpa}</p>
-      </div>
-      <div>
-        <h2>Campuse Info</h2>
-        <img src={campus.imageUrl} alt={campus.name} />
-        <p>
-          name: <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
-        </p>
-        <p>address: {campus.address}</p>
-        <p>description: {campus.description}</p>
+      <div className="student-info">
+        <div>
+          <h2>Student Info</h2>
+          <img
+            src={student.imageUrl}
+            alt={`${student.firstName} ${student.lastName}`}
+            width="30%"
+          />
+          <p>first name: {student.firstName}</p>
+          <p>last name: {student.lastName}</p>
+          <p>email: {student.email}</p>
+          <p>gpa: {student.gpa}</p>
+        </div>
+        <div>
+          <h2>Campuse Info</h2>
+          <img src={campus.imageUrl} alt={campus.name} width="30%"/>
+          <p>
+            name: <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
+          </p>
+          <p>address: {campus.address}</p>
+          <p>description: {campus.description}</p>
+        </div>
       </div>
     </div>
   );
